@@ -1,0 +1,10 @@
+.uploader svg {
+  height: 2, 25em;
+  width: 2.25em;
+}
+
+.uploader svg path:hover {
+  cursor: pointer;
+  fill: #0073e5;
+  transition: all 300ms;
+}

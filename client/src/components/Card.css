@@ -1,0 +1,13 @@
+.card {
+  width: 15.5em;
+  height: 25.6em;
+  background: #fff;
+  border-radius: 10px;
+  position: absolute;
+  left: 5em;
+  top: 50%;
+  margin: -12.8em 0 0;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.1), 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+  z-index: 30;
+  transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}

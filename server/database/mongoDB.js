@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 const { usersModel } = require('../models/users');
-const url = 'mongodb://localhost:27017/';
+const url = require('../config').dev.db_uri;
 const client = new MongoClient(url, { useUnifiedTopology: true });
 let db;
 

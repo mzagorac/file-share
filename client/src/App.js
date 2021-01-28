@@ -22,8 +22,8 @@ function App() {
         <Form>
           <FileInput />
           <Input type="text" label="Email to" id="receiver" />
-          <Input type="text" label="Your email" id="sender" />
-          <textarea></textarea>
+          {/* <Input type="text" label="Your email" id="sender" /> */}
+          {/* <textarea></textarea> */}
           <TransferButton />
         </Form>
       </Card>

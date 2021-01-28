@@ -22,10 +22,12 @@ export default function FileInput(props) {
 
   return (
     <div className="file-picker">
-      <UploadIcon clickHandler={iconClickHandler} />
-      <label htmlFor={props.id}>
-        {!myFile ? 'Not Picked' : `${myFile.name}`}
-      </label>
+      <div className="file-picker__button">
+        <UploadIcon clickHandler={iconClickHandler} />
+        <label htmlFor={props.id}>
+          {!myFile ? 'Not Picked' : `${myFile.name}`}
+        </label>
+      </div>
       <input
         hidden
         ref={inputFileRef}

@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Input from './Input';
 import FileInput from './FileInput';
 import TransferButton from './TransferButton';
 
 export default function Form() {
+  const [file, setFile] = useState(null);
+  const [emailTo, setEmail] = useState(null);
+
   const submitHandler = e => {
     e.preventDefault();
-    const file = e.target[0].files[0];
-    const emailTo = e.target[1].value;
+    // const file = e.target[0].files[0];
+    // const emailTo = e.target[1].value;
     // const emailFrom = 'test@test.com';
     const fd = new FormData();
     fd.append('my-file', file);
@@ -23,6 +26,9 @@ export default function Form() {
     //     .catch(err => console.log('Error fetching data', err));
   };
 
+  // console.log(file);
+  // console.log(emailTo);
+
   return (
     <div>
       <form
@@ -30,8 +36,14 @@ export default function Form() {
         method="post"
         onSubmit={submitHandler}
       >
-        <FileInput />
-        <Input type="text" label="Email to:" id="receiver" />
+        <FileInput setMyFile={setFile} file={file} />
+        <Input
+          type="text"
+          label="Email to:"
+          id="receiver"
+          setEmail={setEmail}
+          emailTo={emailTo}
+        />
         {/* <Input type="text" label="Your email" id="sender" /> */}
         {/* <textarea></textarea> */}
         <TransferButton />

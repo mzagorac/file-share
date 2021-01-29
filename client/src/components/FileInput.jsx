@@ -2,8 +2,8 @@ import React, { useRef, useEffect, useState } from 'react';
 import UploadIcon from './UploadIcon';
 import './FileInput.css';
 
-export default function FileInput(props) {
-  const [myFile, setMyFile] = useState(null);
+export default function FileInput({ setMyFile, file, ...rest }) {
+  // const [myFile, setMyFile] = useState(null);
   const inputFileRef = useRef(null);
 
   // useEffect(() => {
@@ -14,7 +14,7 @@ export default function FileInput(props) {
     setMyFile(e.target.files[0]);
   };
 
-  const iconClickHandler = e => {
+  const iconClickHandler = () => {
     inputFileRef.current.click();
   };
 
@@ -24,16 +24,14 @@ export default function FileInput(props) {
     <div className="file-picker">
       <div className="file-picker__button">
         <UploadIcon clickHandler={iconClickHandler} />
-        <label htmlFor={props.id}>
-          {!myFile ? 'Not Picked' : `${myFile.name}`}
-        </label>
+        <label htmlFor={rest.id}>{!file ? 'Not Picked' : `${file.name}`}</label>
       </div>
       <input
         hidden
         ref={inputFileRef}
         type="file"
         onChange={changeHandler}
-        {...props}
+        {...rest}
       />
     </div>
   );

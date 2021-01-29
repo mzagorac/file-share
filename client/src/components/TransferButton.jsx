@@ -4,7 +4,9 @@ import './TransferButton.css';
 export default function SubmitButton() {
   return (
     <div>
-      <button className="transfer-button">Transfer</button>
+      <button disabled className="transfer-button transfer-button__inactive">
+        Transfer
+      </button>
     </div>
   );
 }

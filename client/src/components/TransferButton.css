@@ -14,3 +14,10 @@
   color: #fff;
   outline: 0;
 }
+
+.transfer-button__inactive {
+  background: #babcbf;
+  border-color: #babcbf;
+  color: #fff;
+  cursor: default;
+}

@@ -8,6 +8,8 @@
   border: none;
   border-bottom: 1px solid #797979;
   outline: none;
+  width: 100%;
+  font-size: 0.9rem;
 }
 
 .textfield > label {
@@ -16,9 +18,8 @@
 }
 
 .active {
-  /* top: 140px; */
-  transform: translateY(-15px);
-  font-size: 0.8rem;
+  transform: translateY(-17px);
+  font-size: 0.7rem;
 }
 
 /* .textfield {

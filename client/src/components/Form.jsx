@@ -1,16 +1,18 @@
 import React from 'react';
+import Input from './Input';
+import FileInput from './FileInput';
+import TransferButton from './TransferButton';
 
-export default function Form({ children }) {
+export default function Form() {
   const submitHandler = e => {
     e.preventDefault();
     const file = e.target[0].files[0];
-    const emailTo = 'test@test.com';
-    const emailFrom = 'test@test.com';
-    console.log('Submitted', file);
+    const emailTo = e.target[1].value;
+    // const emailFrom = 'test@test.com';
     const fd = new FormData();
     fd.append('my-file', file);
     fd.append('email-to', emailTo);
-    fd.append('email-from', emailFrom);
+    // fd.append('email-from', emailFrom);
 
     //   fetch('http://127.0.0.1:8000/api/v1/uploadfile', {
     //     method: 'POST',
@@ -28,7 +30,11 @@ export default function Form({ children }) {
         method="post"
         onSubmit={submitHandler}
       >
-        {children}
+        <FileInput />
+        <Input type="text" label="Email to:" id="receiver" />
+        {/* <Input type="text" label="Your email" id="sender" /> */}
+        {/* <textarea></textarea> */}
+        <TransferButton />
       </form>
     </div>
   );

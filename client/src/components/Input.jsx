@@ -2,11 +2,20 @@ import React, { useState } from 'react';
 import './Input.css';
 
 export default function Input(props) {
-  const [isFocused, setIsFocusd] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const [email, setEmail] = useState(null);
 
-  // const handleFocus = () => {
-  //   setIsFocusd(true);
-  // };
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleChange = e => {
+    setEmail(e.target.value);
+  };
+
+  const handleBur = e => {
+    if (!email) setIsFocused(false);
+  };
 
   return (
     <div className="textfield">
@@ -17,8 +26,9 @@ export default function Input(props) {
         {props.label}
       </label>
       <input
-        onFocus={() => setIsFocusd(true)}
-        onBlur={() => setIsFocusd(false)}
+        onFocus={handleFocus}
+        onBlur={handleBur}
+        onChange={handleChange}
         className="textfield__field"
         {...props}
       />

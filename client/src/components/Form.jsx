@@ -26,9 +26,6 @@ export default function Form() {
     //     .catch(err => console.log('Error fetching data', err));
   };
 
-  // console.log(file);
-  // console.log(emailTo);
-
   return (
     <div>
       <form
@@ -46,7 +43,7 @@ export default function Form() {
         />
         {/* <Input type="text" label="Your email" id="sender" /> */}
         {/* <textarea></textarea> */}
-        <TransferButton />
+        <TransferButton file={file} emailTo={emailTo} />
       </form>
     </div>
   );

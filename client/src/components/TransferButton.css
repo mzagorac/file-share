@@ -13,9 +13,16 @@
   background: #409fff;
   color: #fff;
   outline: 0;
+  cursor: pointer;
+  transition: all 300ms;
 }
 
-.transfer-button__inactive {
+.transfer-button:hover {
+  background-color: #0073e5;
+}
+
+.transfer-button__inactive,
+.transfer-button__inactive:hover {
   background: #babcbf;
   border-color: #babcbf;
   color: #fff;

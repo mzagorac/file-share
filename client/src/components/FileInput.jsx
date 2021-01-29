@@ -3,12 +3,7 @@ import UploadIcon from './UploadIcon';
 import './FileInput.css';
 
 export default function FileInput({ setMyFile, file, ...rest }) {
-  // const [myFile, setMyFile] = useState(null);
   const inputFileRef = useRef(null);
-
-  // useEffect(() => {
-  //   console.log(inputFileRef.current.files[0]);
-  // }, [myFile]);
 
   const changeHandler = e => {
     setMyFile(e.target.files[0]);
@@ -17,8 +12,6 @@ export default function FileInput({ setMyFile, file, ...rest }) {
   const iconClickHandler = () => {
     inputFileRef.current.click();
   };
-
-  // console.log(myFile);
 
   return (
     <div className="file-picker">

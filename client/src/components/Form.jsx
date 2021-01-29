@@ -9,9 +9,6 @@ export default function Form() {
 
   const submitHandler = e => {
     e.preventDefault();
-    // const file = e.target[0].files[0];
-    // const emailTo = e.target[1].value;
-    // const emailFrom = 'test@test.com';
     const fd = new FormData();
     fd.append('my-file', file);
     fd.append('email-to', emailTo);

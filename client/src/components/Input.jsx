@@ -3,7 +3,6 @@ import './Input.css';
 
 export default function Input({ setEmail, emailTo, ...rest }) {
   const [isFocused, setIsFocused] = useState(false);
-  // const [email, setEmail] = useState(null);
 
   const handleFocus = () => {
     setIsFocused(true);

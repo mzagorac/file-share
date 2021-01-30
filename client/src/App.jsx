@@ -1,15 +1,15 @@
-import Card from './components/Card';
-import Form from './components/Form';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Upload from './pages/Upload';
+import Download from './pages/Download';
 
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <Card>
-        <Form />
-      </Card>
-    </div>
+    <Router>
+      <Route path="/upload" component={Upload} />
+      <Route path="/download" component={Download} />
+    </Router>
   );
 }
 

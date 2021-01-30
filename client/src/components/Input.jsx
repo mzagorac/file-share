@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Input.css';
 
-export default function Input({ setEmail, emailTo, ...rest }) {
+export default function Input({ setValue, ...rest }) {
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => {
@@ -9,11 +9,11 @@ export default function Input({ setEmail, emailTo, ...rest }) {
   };
 
   const handleChange = e => {
-    setEmail(e.target.value);
+    setValue(e.target.value);
   };
 
   const handleBur = e => {
-    if (!emailTo) setIsFocused(false);
+    if (!rest.value) setIsFocused(false);
   };
 
   return (

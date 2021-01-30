@@ -33,7 +33,7 @@ const postFile = async (req, res, next) => {
 
     emailTo(
       `${results.ops[0]['email-to']}`,
-      'https://www.imdb.com/?ref_=nv_home',
+      'http://127.0.0.1:3000/download',
       code
     ).catch(console.error);
 

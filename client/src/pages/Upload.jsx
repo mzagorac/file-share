@@ -1,12 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '../components/Card';
 import Input from '../components/Input';
 import FileInput from '../components/FileInput';
 import TransferButton from '../components/TransferButton';
 
+import { isValidEmail } from '../utils';
+
 export default function Form() {
   const [file, setFile] = useState(null);
   const [emailTo, setEmail] = useState('');
+  const [isButtonReady, setIsButtonReady] = useState(false);
+
+  useEffect(() => {
+    if (file && isValidEmail(emailTo)) {
+      setIsButtonReady(true);
+    } else {
+      setIsButtonReady(false);
+    }
+  }, [file, emailTo]);
 
   const submitHandler = e => {
     e.preventDefault();
@@ -44,7 +55,10 @@ export default function Form() {
         />
         {/* <Input type="text" label="Your email" id="sender" /> */}
         {/* <textarea></textarea> */}
-        <TransferButton type="submit" file={file} emailTo={emailTo}>
+        <TransferButton
+          type="submit"
+          isReady={isButtonReady} /* file={file} emailTo={emailTo} */
+        >
           Transfer
         </TransferButton>
       </form>

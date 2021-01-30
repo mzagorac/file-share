@@ -5,7 +5,7 @@ import TransferButton from './TransferButton';
 
 export default function Form() {
   const [file, setFile] = useState(null);
-  const [emailTo, setEmail] = useState(null);
+  const [emailTo, setEmail] = useState('');
 
   const submitHandler = e => {
     e.preventDefault();
@@ -14,13 +14,16 @@ export default function Form() {
     fd.append('email-to', emailTo);
     // fd.append('email-from', emailFrom);
 
-    //   fetch('http://127.0.0.1:8000/api/v1/uploadfile', {
-    //     method: 'POST',
-    //     body: fd,
-    //   })
-    //     .then(response => response.json())
-    //     .then(data => console.log(data))
-    //     .catch(err => console.log('Error fetching data', err));
+    fetch('http://127.0.0.1:8000/api/v1/uploadfile', {
+      method: 'POST',
+      body: fd,
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(err => console.log('Error fetching data', err));
+
+    setFile(null);
+    setEmail('');
   };
 
   return (
@@ -34,13 +37,16 @@ export default function Form() {
         <Input
           type="text"
           label="Email to:"
+          value={emailTo}
           id="receiver"
           setEmail={setEmail}
           emailTo={emailTo}
         />
         {/* <Input type="text" label="Your email" id="sender" /> */}
         {/* <textarea></textarea> */}
-        <TransferButton file={file} emailTo={emailTo} />
+        <TransferButton type="submit" file={file} emailTo={emailTo}>
+          Transfer
+        </TransferButton>
       </form>
     </div>
   );

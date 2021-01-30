@@ -18,7 +18,7 @@ const postFile = async (req, res, next) => {
   if (!req.file) {
     return next(new Error('Plesae upload a file'));
   }
-  if (!req.body['email-to'] || !req.body['email-from']) {
+  if (!req.body['email-to'] /* || !req.body['email-from'] */) {
     return next(new Error('Please provide sender and receiver emails'));
   }
 

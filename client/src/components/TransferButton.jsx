@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { isValidEmail } from '../utils';
 import './TransferButton.css';
 
-export default function SubmitButton({ file, emailTo }) {
+export default function SubmitButton({ file, emailTo, children }) {
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
@@ -13,12 +13,12 @@ export default function SubmitButton({ file, emailTo }) {
   return (
     <div>
       <button
-        disabled
+        disabled={!isReady}
         className={`transfer-button ${
           !isReady ? 'transfer-button__inactive' : ''
         }`}
       >
-        Transfer
+        {children}
       </button>
     </div>
   );

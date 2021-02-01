@@ -15,18 +15,35 @@ export default function Download() {
     }
   }, [code]);
 
+  async function submitHandler(e) {
+    e.preventDefault();
+
+    const response = await fetch('http://127.0.0.1:8000/api/v1/download', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ code: code }),
+    });
+
+    const data = await response.blob();
+    console.log(data);
+  }
+
   return (
     <Card>
       <h1>Download</h1>
-      <Input
-        type="text"
-        label="Enter code:"
-        value={code}
-        id="receiver"
-        setValue={setCode}
-        // emailTo={emailTo}
-      />
-      <TransferButton isReady={isButtonReady}>Download</TransferButton>
+      <form onSubmit={submitHandler}>
+        <Input
+          type="text"
+          label="Enter code:"
+          value={code}
+          id="receiver"
+          setValue={setCode}
+          // emailTo={emailTo}
+        />
+        <TransferButton isReady={isButtonReady}>Download</TransferButton>
+      </form>
     </Card>
   );
 }

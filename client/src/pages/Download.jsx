@@ -26,8 +26,20 @@ export default function Download() {
       body: JSON.stringify({ code: code }),
     });
 
-    const data = await response.blob();
-    console.log(data);
+    // console.log('response', response);
+    // console.log('blob', blob);
+
+    const blob = await response.blob();
+
+    let url = window.URL.createObjectURL(blob);
+    let a = document.createElement('a');
+    a.href = url;
+    a.download = 'test.mkv';
+    // console.log(url);
+
+    a.click();
+
+    console.log(blob);
   }
 
   return (

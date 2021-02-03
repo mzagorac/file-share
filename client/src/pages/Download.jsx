@@ -18,28 +18,68 @@ export default function Download() {
   async function submitHandler(e) {
     e.preventDefault();
 
-    const response = await fetch('http://127.0.0.1:8000/api/v1/download', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ code: code }),
-    });
+    var request = new XMLHttpRequest();
 
+    request.open('POST', 'http://127.0.0.1:8000/api/v1/download', true);
+    request.responseType = 'blob';
+    request.setRequestHeader('Content-Type', 'application/json');
+    request.send(JSON.stringify({ code }));
+
+    request.onreadystatechange = function (event) {
+      if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+        if (request.readyState === 4) {
+          let url = window.URL.createObjectURL(this.response);
+          let a = document.createElement('a');
+          a.href = url;
+          a.download = 'test';
+          a.click();
+        }
+      }
+    };
+
+    request.onprogress = function (e) {
+      // console.log(e.loaded, '-', e.total);
+      console.log((e.loaded * 100) / e.total);
+    };
+
+    request.onload = function (e) {
+      console.log('LOADED', e);
+    };
+
+    // request.addEventListener('readystatechange', e => {
+    //   console.log('request listener event object', e);
+    // });
+
+    // const response = await fetch('http://127.0.0.1:8000/api/v1/download', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({ code: code }),
+    // });
+
+    // const blob = await response.blob();
+
+    // while (true) {
+    //   const { done, value } = await blob.stream().getReader().read();
+    //   console.log('done', value);
+    //   console.log('done', done);
+
+    //   if (done) break;
+    // }
+
+    // console.log('blob - stream', blob.stream());
     // console.log('response', response);
-    // console.log('blob', blob);
+    // for (let [name, value] of response.headers.entries()) {
+    //   console.log(name, ':', value);
+    // }
 
-    const blob = await response.blob();
+    // let url = window.URL.createObjectURL(blob);
+    // let a = document.createElement('a');
+    // a.href = url;
+    // a.download = 'test';
 
-    let url = window.URL.createObjectURL(blob);
-    let a = document.createElement('a');
-    a.href = url;
-    a.download = 'test.mkv';
-    // console.log(url);
-
-    a.click();
-
-    console.log(blob);
+    // a.click();
   }
 
   return (

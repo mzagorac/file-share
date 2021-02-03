@@ -5,6 +5,8 @@ const userRouter = require('./routes/users.js');
 const downloadRouter = require('./routes/download');
 const app = express();
 
+// throw new Error('Some error occured');
+
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -17,5 +19,10 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/v1', [userRouter, downloadRouter, uploadRouter]);
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.log('Catch all errors');
+});
 
 module.exports = app;

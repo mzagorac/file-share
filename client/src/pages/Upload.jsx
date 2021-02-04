@@ -5,11 +5,14 @@ import FileInput from '../components/FileInput';
 import TransferButton from '../components/TransferButton';
 
 import { isValidEmail } from '../utils';
+import ProgressBar from '../components/ProgressBar';
 
 export default function Form() {
   const [file, setFile] = useState(null);
   const [emailTo, setEmail] = useState('');
   const [isButtonReady, setIsButtonReady] = useState(false);
+
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     if (file && isValidEmail(emailTo)) {
@@ -26,16 +29,24 @@ export default function Form() {
     fd.append('email-to', emailTo);
     // fd.append('email-from', emailFrom);
 
-    fetch('http://127.0.0.1:8000/api/v1/uploadfile', {
-      method: 'POST',
-      body: fd,
-    })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(err => console.log('Error fetching data', err));
+    const request = new XMLHttpRequest();
+    request.open('POST', 'http://127.0.0.1:8000/api/v1/uploadfile', true);
 
-    setFile(null);
-    setEmail('');
+    request.upload.onprogress = e => {
+      setProgress((e.loaded * 100) / e.total);
+    };
+
+    request.upload.onload = e => {
+      if (e.total === e.loaded) {
+        setTimeout(() => {
+          setProgress(0);
+          setFile(null);
+          setEmail('');
+        }, 3000);
+      }
+    };
+
+    request.send(fd);
   };
 
   return (
@@ -62,6 +73,7 @@ export default function Form() {
           Transfer
         </TransferButton>
       </form>
+      <ProgressBar progress={progress} />
     </Card>
   );
 }

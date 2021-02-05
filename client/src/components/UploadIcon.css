@@ -14,3 +14,8 @@
   fill: #0073e5;
   transition: all 300ms;
 }
+
+.move-icon {
+  transform: translate(-10%, -70%) scale(0.7);
+  transition: all 300ms;
+}

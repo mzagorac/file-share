@@ -46,6 +46,7 @@ export default function Download() {
     request.onload = function (e) {
       setTimeout(() => {
         setProgress(0);
+        setCode('');
       }, 3000);
     };
   }

@@ -1,18 +1,40 @@
 .file-picker {
   width: 100%;
   height: 6rem;
-
   border-bottom: 1px solid #797979;
-
-  /* background-color: beige; */
+  overflow: hidden;
 }
 
 .file-picker__button {
-  margin: 2rem;
+  position: relative;
+  height: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
+
+.file-picker label {
+  height: 50%;
+  width: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.file-name__label {
+  width: 100% !important;
+  height: 100% !;
+  transform: translateY(25px);
+  transition: all 300ms;
+  font-size: 0.8rem;
+}
+
+/* .float {
+  position: absolute;
+  transform: translateX(200, 200);
+  transition: all 300ms;
+} */
 
 /* input[type='file' i] {
   opacity: 0;

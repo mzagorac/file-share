@@ -4,12 +4,12 @@ import './Input.css';
 export default function Input({ setValue, ...rest }) {
   const [isFocused, setIsFocused] = useState(false);
 
-  const handleFocus = () => {
-    setIsFocused(true);
-  };
-
   const handleChange = e => {
     setValue(e.target.value);
+  };
+
+  const handleFocus = () => {
+    setIsFocused(true);
   };
 
   const handleBur = e => {

@@ -3,7 +3,7 @@ import './ProgressBar.css';
 
 export default function ProgressBar({ progress }) {
   const style = {
-    backgroundColor: 'lightblue',
+    backgroundColor: '#0073e5',
     width: `${progress}%`,
     height: '100%',
   };

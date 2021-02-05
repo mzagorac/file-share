@@ -16,8 +16,13 @@ export default function FileInput({ setMyFile, file, ...rest }) {
   return (
     <div className="file-picker">
       <div className="file-picker__button">
-        <UploadIcon clickHandler={iconClickHandler} />
-        <label htmlFor={rest.id}>{!file ? 'Not Picked' : `${file.name}`}</label>
+        <UploadIcon clickHandler={iconClickHandler} file={file} />
+        <label
+          className={`${file ? 'file-name__label' : ''}`}
+          htmlFor={rest.id}
+        >
+          {!file ? 'Not Picked' : `${file.name}`}
+        </label>
       </div>
       <input
         hidden

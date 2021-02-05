@@ -67,6 +67,7 @@ export default function Form() {
         {/* <Input type="text" label="Your email" id="sender" /> */}
         {/* <textarea></textarea> */}
         <TransferButton
+          file={file}
           type="submit"
           isReady={isButtonReady} /* file={file} emailTo={emailTo} */
         >

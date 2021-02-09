@@ -30,7 +30,7 @@ export default function Form() {
     // fd.append('email-from', emailFrom);
 
     const request = new XMLHttpRequest();
-    request.open('POST', 'http://127.0.0.1:8000/api/v1/uploadfile', true);
+    request.open('POST', '/uploadfile', true);
 
     request.upload.onprogress = e => {
       setProgress((e.loaded * 100) / e.total);

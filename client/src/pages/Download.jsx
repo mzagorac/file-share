@@ -22,7 +22,7 @@ export default function Download() {
 
     var request = new XMLHttpRequest();
 
-    request.open('POST', 'http://127.0.0.1:8000/api/v1/download', true);
+    request.open('POST', '/download', true);
     request.responseType = 'blob';
     request.setRequestHeader('Content-Type', 'application/json');
     request.send(JSON.stringify({ code }));
@@ -35,6 +35,8 @@ export default function Download() {
           a.href = url;
           a.download = 'test';
           a.click();
+
+          setTimeout(() => window.URL.revokeObjectURL(url), 1000);
         }
       }
     };

@@ -25,6 +25,7 @@ export default function Input({ setValue, ...rest }) {
         {rest.label}
       </label>
       <input
+        autoComplete="off"
         onFocus={handleFocus}
         onBlur={handleBur}
         onChange={handleChange}

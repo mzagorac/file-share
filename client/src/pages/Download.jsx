@@ -33,7 +33,7 @@ export default function Download() {
           let url = window.URL.createObjectURL(this.response);
           let a = document.createElement('a');
           a.href = url;
-          a.download = 'test';
+          a.download = request.getResponseHeader('file-name');
           a.click();
 
           setTimeout(() => window.URL.revokeObjectURL(url), 1000);

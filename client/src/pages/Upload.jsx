@@ -11,7 +11,6 @@ export default function Form() {
   const [file, setFile] = useState(null);
   const [emailTo, setEmail] = useState('');
   const [isButtonReady, setIsButtonReady] = useState(false);
-
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {

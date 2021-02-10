@@ -18,6 +18,7 @@ async function downloadFile(req, res, next) {
   }
   res.attachment(file.path);
   res.set('Content-Length', file.size);
+  res.set('file-name', file.filename);
   const readFile = fs.createReadStream(file.path);
 
   pipeline(readFile, res, err => {

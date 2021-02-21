@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef } from 'react';
 import UploadIcon from './UploadIcon';
 import './FileInput.css';
 

@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { isValidEmail } from '../utils';
+import React from 'react';
 import './TransferButton.css';
 
 export default function SubmitButton({
   /* file, emailTo, */ isReady,
   children,
 }) {
-  // const [isReady, setIsReady] = useState(false);
-
-  // useEffect(() => {
-  //   if (file && isValidEmail(emailTo)) setIsReady(true);
-  //   else setIsReady(false);
-  // }, [file, emailTo]);
+ ;
 
   return (
     <div>

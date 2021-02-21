@@ -8,6 +8,7 @@ export default function Download() {
   const [code, setCode] = useState('');
   const [isButtonReady, setIsButtonReady] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
     if (code.trim().length === 5) {
@@ -49,6 +50,7 @@ export default function Download() {
       setTimeout(() => {
         setProgress(0);
         setCode('');
+        setIsFocused(false)
       }, 3000);
     };
   }
@@ -62,6 +64,8 @@ export default function Download() {
             label="Enter code:"
             value={code}
             id="receiver"
+            isFocused={isFocused}
+            setIsFocused={setIsFocused}
             setValue={setCode}
             // emailTo={emailTo}
           />

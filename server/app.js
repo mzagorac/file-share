@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 
 app.use('/api/v1', [userRouter, downloadRouter, uploadRouter]);
 
-// Error handling middleware, IMPLEMENT!!!
+// TODO: Error handling middleware, IMPLEMENT!!!
 app.use((err, req, res, next) => {
   console.log('Catch all errors');
 });

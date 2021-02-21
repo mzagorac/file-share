@@ -12,6 +12,7 @@ export default function Form() {
   const [emailTo, setEmail] = useState('');
   const [isButtonReady, setIsButtonReady] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
     if (file && isValidEmail(emailTo)) {
@@ -23,6 +24,7 @@ export default function Form() {
 
   const submitHandler = e => {
     e.preventDefault();
+    
     const fd = new FormData();
     fd.append('my-file', file);
     fd.append('email-to', emailTo);
@@ -61,6 +63,8 @@ export default function Form() {
           label="Email to:"
           value={emailTo}
           id="receiver"
+          isFocused={isFocused}
+          setIsFocused={setIsFocused}
           setValue={setEmail}
         />
         {/* <Input type="text" label="Your email" id="sender" /> */}

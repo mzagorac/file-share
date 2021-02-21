@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Input.css';
 
-export default function Input({ setValue, ...rest }) {
-  const [isFocused, setIsFocused] = useState(false);
+export default function Input({ isFocused, setIsFocused, setValue, ...rest }) {
+  
 
   const handleChange = e => {
     setValue(e.target.value);
